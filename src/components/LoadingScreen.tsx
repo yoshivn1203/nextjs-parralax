@@ -10,7 +10,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsExiting(true)
-    }, 2000)
+    }, 2500)
     return () => clearTimeout(timer)
   }, [])
 
@@ -71,7 +71,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             className="text-lg font-inter font-light tracking-wider text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.3 }}
           >
             Your Personal Travel Curator
           </motion.p>

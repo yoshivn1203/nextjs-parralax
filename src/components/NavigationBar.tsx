@@ -75,11 +75,7 @@ export default function NavigationBar() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg transition-transform hover:scale-110"
             >
-              {isMenuOpen ? (
-                <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
+              {!isMenuOpen &&(
                 <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -104,7 +100,7 @@ export default function NavigationBar() {
 
             {/* Menu Panel */}
             <motion.div
-              className="fixed right-0 top-0 h-full w-80 bg-black/40 dark:bg-black/50 backdrop-blur-xl shadow-2xl z-50 border-l border-white/20"
+              className="fixed right-0 top-0 h-full w-80 bg-black/40 dark:bg-black/50 backdrop-blur-xl shadow-2xl z-50"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
@@ -131,7 +127,7 @@ export default function NavigationBar() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <span className="relative text-lg font-light tracking-wide text-white/80 transition-all duration-300 group-hover:text-white">
+                      <span className="relative text-lg font-light tracking-wide text-white/70 transition-all duration-300 group-hover:text-orange-400">
                         {item.label}
                       </span>
                       <span className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-orange-400 to-amber-300 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
