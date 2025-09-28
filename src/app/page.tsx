@@ -140,26 +140,85 @@ export default function HomePage() {
               <source src="/banner.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            {/* <div className="absolute inset-0 bg-black/30" /> */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
 
             <motion.div
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              className="absolute left-20 lg:left-48 bottom-1/3 z-10 text-left"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2, ease: "easeOut" }}
             >
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <motion.h1
+                className="font-satisfy text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1, duration: 2 }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
+                <span className="text-3xl md:text-4xl lg:text-5xl">Where</span>
+                <motion.span
+                  className="block text-5xl md:text-6xl lg:text-7xl -mt-2"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.8, duration: 2 }}
+                >
+                  dreams become
+                </motion.span>
+                <motion.span
+                  className="block text-6xl md:text-7xl lg:text-8xl -mt-3 bg-gradient-to-r from-orange-400 via-amber-400 to-orange-300 bg-clip-text text-transparent p-6"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 2.6, duration: 1.5 }}
+                >
+                  {" "}journeys
+                </motion.span>
+              </motion.h1>
+
+              <motion.p
+                className="font-inter text-xs md:text-sm text-white/80 font-light tracking-[0.15em]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 3.5, duration: 1.5 }}
+              >
+                Personal travel consulting for the extraordinary
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-10 left-0 right-0 mx-auto w-fit cursor-pointer group"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                y: [0, 8, 0]
+              }}
+              transition={{
+                opacity: { duration: 1, delay: 4 },
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 4.5 }
+              }}
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-white/70 text-xs tracking-wider uppercase font-light">Scroll to explore</span>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:bg-white/30 transition-all duration-300"></div>
+                  <div className="relative bg-white/10 backdrop-blur-sm border border-white/30 rounded-full p-3 group-hover:bg-white/20 transition-all duration-300">
+                    <svg
+                      className="w-5 h-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
 

@@ -27,7 +27,7 @@ export default function Logo({ className = "w-10 h-10", textClassName = "" }: { 
         </defs>
       </svg>
       {textClassName && (
-        <span className={textClassName}>LifeTender</span>
+        <span className={`font-cormorant font-light ${textClassName}`}>LifeTender</span>
       )}
     </div>
   )
