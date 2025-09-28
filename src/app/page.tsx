@@ -9,6 +9,7 @@ import DestinationCard from '@/components/DestinationCard'
 import Logo from '@/components/Logo'
 import NavigationBar from '@/components/NavigationBar'
 import TestimonialCard from '@/components/TestimonialCard'
+import WorldMap from '@/components/WorldMap'
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
@@ -74,7 +75,7 @@ export default function HomePage() {
     {
       name: "James Chen",
       location: "San Francisco, USA",
-      testimonial: "As a busy executive, I needed someone who understood luxury travel. LifeTender delivered beyond expectations with exclusive access to experiences I didn't even know existed.",
+      testimonial: "As a busy executive, I needed someone who understood luxury travel. LifeTender delivered beyond expectations with exclusive access to experiences I didn't even know existed. Absolutely worth every penny.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
       trip: "Japanese Business & Culture Tour"
@@ -250,7 +251,23 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section id="testimonials" className="py-20 px-8 bg-white dark:bg-gray-800">
+          <section className="py-20 px-8 bg-white dark:bg-gray-900">
+            <AnimatedSection animation="slideUp" className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
+                  Where Will Your Journey Take You?
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                  Explore our global destinations. Click on any marker to discover what makes each location extraordinary.
+                </p>
+              </div>
+              <div className="h-[600px] bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-visible shadow-xl relative">
+                <WorldMap />
+              </div>
+            </AnimatedSection>
+          </section>
+
+          <section id="testimonials" className="py-20 px-8 bg-gray-50 dark:bg-gray-800">
             <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
                 Client Experiences
