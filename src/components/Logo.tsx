@@ -21,8 +21,8 @@ export default function Logo({ className = "w-10 h-10", textClassName = "" }: { 
         <circle cx="50" cy="35" r="8" fill="white" />
         <defs>
           <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#06B6D4" />
+            <stop offset="0%" stopColor="#FB923C" />
+            <stop offset="100%" stopColor="#F97316" />
           </linearGradient>
         </defs>
       </svg>

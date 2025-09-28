@@ -8,6 +8,7 @@ import AnimatedSection from '@/components/AnimatedSection'
 import DestinationCard from '@/components/DestinationCard'
 import Logo from '@/components/Logo'
 import NavigationBar from '@/components/NavigationBar'
+import TestimonialCard from '@/components/TestimonialCard'
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
@@ -58,6 +59,57 @@ export default function HomePage() {
       image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800",
       price: "From $5,200",
       duration: "Your timeline"
+    }
+  ]
+
+  const testimonials = [
+    {
+      name: "Sarah Mitchell",
+      location: "New York, USA",
+      testimonial: "LifeTender transformed our anniversary trip into an unforgettable journey. Every detail was perfect, from the private villa in Santorini to the sunset yacht dinner. Their attention to detail is unmatched.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+      trip: "Greek Islands Romantic Getaway"
+    },
+    {
+      name: "James Chen",
+      location: "San Francisco, USA",
+      testimonial: "As a busy executive, I needed someone who understood luxury travel. LifeTender delivered beyond expectations with exclusive access to experiences I didn't even know existed.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+      trip: "Japanese Business & Culture Tour"
+    },
+    {
+      name: "Emma Thompson",
+      location: "London, UK",
+      testimonial: "The personalized itinerary for our family safari was incredible. Our consultant thought of everything - from child-friendly lodges to private guides who made the experience magical for our kids.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400",
+      trip: "African Family Safari Adventure"
+    },
+    {
+      name: "Michael Rodriguez",
+      location: "Miami, USA",
+      testimonial: "I've traveled extensively, but LifeTender showed me a side of Peru I never would have discovered alone. The private shamanic ceremonies and exclusive Machu Picchu sunrise were life-changing.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+      trip: "Peru Spiritual Journey"
+    },
+    {
+      name: "Isabella Laurent",
+      location: "Paris, France",
+      testimonial: "Their 24/7 support saved our honeymoon when our flight was cancelled. They arranged a private jet within hours and upgraded our entire Bali experience. Absolutely worth every penny.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
+      trip: "Bali Luxury Honeymoon"
+    },
+    {
+      name: "David Park",
+      location: "Seoul, South Korea",
+      testimonial: "LifeTender's connections opened doors to Michelin-starred restaurants and private wine tastings that were fully booked. They made our anniversary celebration in France truly extraordinary.",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
+      trip: "French Culinary Experience"
     }
   ]
 
@@ -122,8 +174,8 @@ export default function HomePage() {
 
             <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mb-20">
               <AnimatedSection animation="slideUp" delay={0.1} className="text-center">
-                <div className="bg-blue-100 dark:bg-blue-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="bg-orange-100 dark:bg-orange-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
                   </svg>
                 </div>
@@ -192,7 +244,30 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="py-20 px-8 bg-gradient-to-r from-blue-600 to-cyan-500">
+          <section id="testimonials" className="py-20 px-8 bg-white dark:bg-gray-800">
+            <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
+                Client Experiences
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Hear from travelers who've experienced the LifeTender difference
+              </p>
+            </AnimatedSection>
+
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <AnimatedSection
+                  key={testimonial.name}
+                  animation="scale"
+                  delay={index * 0.1}
+                >
+                  <TestimonialCard {...testimonial} />
+                </AnimatedSection>
+              ))}
+            </div>
+          </section>
+
+          <section className="py-20 px-8 bg-gradient-to-r from-orange-500 to-amber-400">
             <AnimatedSection animation="slideUp" className="max-w-4xl mx-auto text-center text-white">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Ready for Your Bespoke Journey?
@@ -201,7 +276,7 @@ export default function HomePage() {
                 Let's collaborate to design a travel experience that reflects your unique vision and exceeds your expectations.
               </p>
               <motion.button
-                className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-orange-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

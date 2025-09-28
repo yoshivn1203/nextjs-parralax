@@ -6,7 +6,7 @@ import Logo from './Logo'
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-600 to-cyan-400"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-500 to-amber-400"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.5, delay: 2.5 }}

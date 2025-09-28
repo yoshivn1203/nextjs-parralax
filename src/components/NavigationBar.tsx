@@ -49,11 +49,7 @@ export default function NavigationBar() {
             {/* Dark/Light Mode Toggle - Left */}
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-lg transition-colors ${
-                isScrolled
-                  ? 'hover:bg-gray-200 dark:hover:bg-gray-700'
-                  : 'hover:bg-white/20'
-              }`}
+              className="p-2 rounded-lg transition-transform hover:scale-110"
             >
               {isDarkMode ? (
                 <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,11 +73,7 @@ export default function NavigationBar() {
             {/* Menu Button - Right */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-lg transition-colors ${
-                isScrolled
-                  ? 'hover:bg-gray-200 dark:hover:bg-gray-700'
-                  : 'hover:bg-white/20'
-              }`}
+              className="p-2 rounded-lg transition-transform hover:scale-110"
             >
               {isMenuOpen ? (
                 <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,37 +113,29 @@ export default function NavigationBar() {
               <div className="p-6">
                 <button
                   onClick={() => setIsMenuOpen(false)}
-                  className="absolute top-6 right-6 p-2 rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition-colors"
+                  className="absolute top-6 right-6 p-2 rounded-lg transition-transform hover:scale-110"
                 >
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
 
-                <div className="mt-20 space-y-8">
+                <div className="mt-20 space-y-4">
                   {menuItems.map((item, index) => (
-                    <motion.div
+                    <motion.a
                       key={item.href}
+                      href={item.href}
+                      className="group block relative py-3 px-4 -mx-4 rounded-lg"
+                      onClick={() => setIsMenuOpen(false)}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <a
-                        href={item.href}
-                        className="group block relative py-2"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        <span className="text-lg font-light tracking-wide text-white/90 transition-all duration-300 group-hover:text-white">
-                          {item.label}
-                        </span>
-                        <motion.span
-                          className="absolute bottom-0 left-0 h-px bg-gradient-to-r from-blue-400 to-cyan-300"
-                          initial={{ width: 0 }}
-                          whileHover={{ width: '100%' }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      </a>
-                    </motion.div>
+                      <span className="relative text-lg font-light tracking-wide text-white/80 transition-all duration-300 group-hover:text-white">
+                        {item.label}
+                      </span>
+                      <span className="absolute bottom-0 left-4 right-4 h-px bg-gradient-to-r from-orange-400 to-amber-300 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+                    </motion.a>
                   ))}
                 </div>
               </div>
