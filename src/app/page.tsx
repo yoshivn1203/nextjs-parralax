@@ -312,9 +312,9 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="py-20 px-8 bg-white dark:bg-gray-900">
+          <section className="py-10 lg:py-20 px-8 bg-white dark:bg-gray-900">
             <AnimatedSection animation="slideUp" className="max-w-7xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-8 lg:mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
                   Where Will Your Journey Take You?
                 </h2>
@@ -322,7 +322,7 @@ export default function HomePage() {
                   Explore our global destinations. Click on any marker to discover what makes each location extraordinary.
                 </p>
               </div>
-              <div className="h-[600px] bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-visible shadow-xl relative">
+              <div className="h-[300px] lg:h-[600px] bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-visible shadow-xl relative">
                 <WorldMap />
               </div>
             </AnimatedSection>
