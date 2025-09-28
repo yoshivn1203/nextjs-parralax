@@ -163,7 +163,7 @@ export default function HomePage() {
           </div>
 
           <section id="services" className="py-20 px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-amber-300/10 to-orange-500/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-400/40 via-amber-400/25 to-orange-500/35 dark:hidden" />
             <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-20 relative z-10">
               <h2 className="text-5xl md:text-6xl font-light mb-8 text-gray-800 dark:text-white tracking-tight">
                 Why Choose a Personal Travel Consultant?
@@ -218,10 +218,10 @@ export default function HomePage() {
             offset={120}
           >
             <div className="text-center text-white px-8">
-              <h2 className="text-5xl md:text-7xl font-bold mb-8 drop-shadow-2xl">
+              <h2 className="text-5xl md:text-7xl font-bold mb-8">
                 Your Story Awaits
               </h2>
-              <p className="text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
+              <p className="text-xl md:text-3xl max-w-4xl mx-auto">
                 Every journey tells a story. Let me help you write yours with moments that will last a lifetime.
               </p>
             </div>

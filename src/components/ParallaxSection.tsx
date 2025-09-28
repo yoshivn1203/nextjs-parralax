@@ -22,8 +22,7 @@ export default function ParallaxSection({
     offset: ["start end", "end start"]
   })
 
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-50%", "50%"])
-  const contentY = useTransform(scrollYProgress, [0, 1], ["-50px", `${offset}px`])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"])
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${className}`}>
@@ -35,22 +34,20 @@ export default function ParallaxSection({
               y: backgroundY,
               backgroundImage: `url(${backgroundImage})`,
               backgroundPosition: "center",
-              backgroundSize: "140%",
+              backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              height: "140%",
-              top: "-20%",
+              height: "130%",
+              width: "100%",
+              top: "-15%",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/60 z-[1]" />
         </>
       )}
 
-      <motion.div
-        style={{ y: contentY }}
-        className="relative z-10"
-      >
+      <div className="relative z-10">
         {children}
-      </motion.div>
+      </div>
     </div>
   )
 }
