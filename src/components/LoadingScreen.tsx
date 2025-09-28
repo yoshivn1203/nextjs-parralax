@@ -1,16 +1,51 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import Logo from './Logo'
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
+  const [isExiting, setIsExiting] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsExiting(true)
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-orange-500 to-amber-400"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 2.5 }}
-      onAnimationComplete={onComplete}
+    <>
+      {/* Left panel */}
+      <motion.div
+        className="fixed left-0 top-0 bottom-0 w-1/2 z-50 bg-gradient-to-br from-orange-500 to-amber-400"
+        initial={{ x: 0 }}
+        animate={{ x: isExiting ? '-100%' : 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut', delay: isExiting ? 0.2 : 0 }}
+      />
+
+      {/* Right panel */}
+      <motion.div
+        className="fixed right-0 top-0 bottom-0 w-1/2 z-50 bg-gradient-to-br from-orange-500 to-amber-400"
+        initial={{ x: 0 }}
+        animate={{ x: isExiting ? '100%' : 0 }}
+        transition={{ duration: 0.8, ease: 'easeInOut', delay: isExiting ? 0.2 : 0 }}
+        onAnimationComplete={() => {
+          if (isExiting) {
+            onComplete()
+          }
+        }}
+      />
+
+      {/* Content */}
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 1, scale: 1 }}
+        animate={{
+          opacity: isExiting ? 0 : 1,
+          scale: isExiting ? 0.8 : 1
+        }}
+        transition={{ duration: 0.5 }}
     >
       <div className="text-center">
         <motion.div
@@ -28,7 +63,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         </motion.div>
 
         <motion.h1
-          className="text-4xl font-bold text-white mb-4"
+          className="text-5xl font-cormorant font-light text-white mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
@@ -37,7 +72,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         </motion.h1>
 
         <motion.p
-          className="text-xl text-white/90"
+          className="text-lg font-inter font-light tracking-wider text-white/90"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -69,5 +104,6 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
         </motion.div>
       </div>
     </motion.div>
+    </>
   )
 }
