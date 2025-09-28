@@ -162,63 +162,69 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          <section id="services" className="py-20 px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
-            <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
+          <section id="services" className="py-20 px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-amber-300/10 to-orange-500/20" />
+            <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-20 relative z-10">
+              <h2 className="text-5xl md:text-6xl font-light mb-8 text-gray-800 dark:text-white tracking-tight">
                 Why Choose a Personal Travel Consultant?
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 As your dedicated travel consultant, I provide personalized attention, insider access, and curated experiences that transform ordinary trips into extraordinary journeys.
               </p>
             </AnimatedSection>
 
-            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mb-20">
-              <AnimatedSection animation="slideUp" delay={0.1} className="text-center">
-                <div className="bg-orange-100 dark:bg-orange-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-                  </svg>
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 mb-20 relative z-10">
+              <AnimatedSection animation="slideUp" delay={0.1} className="text-center group">
+                <div className="relative p-8 rounded-3xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20">
+                  <div className="bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg className="w-10 h-10 text-orange-600 dark:text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Personalized Planning</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Every detail tailored to your preferences, from accommodations to exclusive experiences.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">Personalized Planning</h3>
-                <p className="text-gray-600 dark:text-gray-400">Every detail tailored to your preferences, from accommodations to exclusive experiences.</p>
               </AnimatedSection>
 
-              <AnimatedSection animation="slideUp" delay={0.2} className="text-center">
-                <div className="bg-green-100 dark:bg-green-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+              <AnimatedSection animation="slideUp" delay={0.2} className="text-center group">
+                <div className="relative p-8 rounded-3xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20">
+                  <div className="bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg className="w-10 h-10 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">Insider Access</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Exclusive connections providing VIP treatment and access to experiences not available to the public.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">Insider Access</h3>
-                <p className="text-gray-600 dark:text-gray-400">Exclusive connections providing VIP treatment and access to experiences not available to the public.</p>
               </AnimatedSection>
 
-              <AnimatedSection animation="slideUp" delay={0.3} className="text-center">
-                <div className="bg-purple-100 dark:bg-purple-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
+              <AnimatedSection animation="slideUp" delay={0.3} className="text-center group">
+                <div className="relative p-8 rounded-3xl bg-white/70 dark:bg-gray-800/70 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20">
+                  <div className="bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
+                    <svg className="w-10 h-10 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-white">24/7 Support</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">Your dedicated consultant available throughout your journey for any needs or changes.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 dark:text-white">24/7 Support</h3>
-                <p className="text-gray-600 dark:text-gray-400">Your dedicated consultant available throughout your journey for any needs or changes.</p>
               </AnimatedSection>
             </div>
           </section>
 
           <ParallaxSection
-            className="relative py-32"
+            className="relative py-32 md:py-48 min-h-[500px] md:min-h-[600px] flex items-center justify-center"
             backgroundImage="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920"
-            offset={20}
+            offset={120}
           >
-            <div className="absolute inset-0 bg-black/50" />
-            <AnimatedSection animation="fadeIn" className="relative z-10 text-center text-white px-8">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <div className="text-center text-white px-8">
+              <h2 className="text-5xl md:text-7xl font-bold mb-8 drop-shadow-2xl">
                 Your Story Awaits
               </h2>
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto">
+              <p className="text-xl md:text-3xl max-w-4xl mx-auto leading-relaxed drop-shadow-lg">
                 Every journey tells a story. Let me help you write yours with moments that will last a lifetime.
               </p>
-            </AnimatedSection>
+            </div>
           </ParallaxSection>
 
           <section id="experiences" className="py-20 px-8 bg-gray-50 dark:bg-gray-900">
