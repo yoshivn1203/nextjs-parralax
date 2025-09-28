@@ -116,18 +116,15 @@ export default function HomePage() {
 
   return (
     <>
-      <AnimatePresence>
-        {isLoading && (
-          <LoadingScreen onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-
-      {!isLoading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+      {/* Always render the main content but control visibility */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut"
+        }}
+      >
           <NavigationBar />
           <div className="relative h-screen flex items-center justify-center overflow-hidden">
             <video
@@ -140,13 +137,18 @@ export default function HomePage() {
               <source src="/banner.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoading ? 0 : 1 }}
+              transition={{ duration: 3, delay: 1 }}
+            />
 
             <motion.div
               className="absolute left-20 lg:left-48 bottom-1/3 z-10 text-left"
               initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2, ease: "easeOut" }}
+              animate={{ opacity: isLoading ? 0 : 1, x: isLoading ? -30 : 0 }}
+              transition={{ duration: 3, ease: "easeOut", delay: isLoading ? 0 : 1.5 }}
             >
               <motion.h1
                 className="font-satisfy text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-relaxed"
@@ -418,8 +420,14 @@ export default function HomePage() {
               <p>&copy; 2024 LifeTender. All rights reserved. | Personal Travel Consultant</p>
             </div>
           </footer>
-        </motion.div>
-      )}
+      </motion.div>
+
+      {/* Loading screen overlay */}
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
     </>
   )
 }
