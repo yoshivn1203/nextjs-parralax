@@ -1,13 +1,268 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import LoadingScreen from '@/components/LoadingScreen'
+import ParallaxSection from '@/components/ParallaxSection'
+import AnimatedSection from '@/components/AnimatedSection'
+import DestinationCard from '@/components/DestinationCard'
+import Logo from '@/components/Logo'
+import NavigationBar from '@/components/NavigationBar'
+
 export default function HomePage() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth'
+  }, [])
+
+  const destinations = [
+    {
+      title: "Bali Wellness Retreat",
+      description: "A curated journey focusing on spiritual renewal, yoga, and traditional healing practices.",
+      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+      price: "From $3,500",
+      duration: "Custom itinerary"
+    },
+    {
+      title: "Greek Island Odyssey",
+      description: "Hand-picked boutique hotels and private yacht experiences through the Cyclades.",
+      image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800",
+      price: "From $5,800",
+      duration: "Tailored duration"
+    },
+    {
+      title: "Japan Cultural Immersion",
+      description: "Exclusive access to tea ceremonies, private temple visits, and master craftsmen.",
+      image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
+      price: "From $7,200",
+      duration: "Personalized journey"
+    },
+    {
+      title: "Parisian Art & Cuisine",
+      description: "Private gallery tours, Michelin-star dining, and cooking classes with renowned chefs.",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+      price: "From $4,900",
+      duration: "Bespoke experience"
+    },
+    {
+      title: "Arabian Luxury Safari",
+      description: "Desert glamping, falconry experiences, and private dune adventures.",
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+      price: "From $6,500",
+      duration: "Custom designed"
+    },
+    {
+      title: "Peru Sacred Valley",
+      description: "Spiritual journey with shamanic ceremonies and exclusive Machu Picchu sunrise.",
+      image: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800",
+      price: "From $5,200",
+      duration: "Your timeline"
+    }
+  ]
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-8">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Hello World</h1>
-      <p className="text-lg text-gray-600 dark:text-gray-300">
-        Welcome to Next.js with App Router!
-      </p>
-      <p className="text-sm text-gray-500 dark:text-gray-400">
-        Toggle between light and dark mode using the button in the navigation bar.
-      </p>
-    </main>
+    <>
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+
+      {!isLoading && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <NavigationBar />
+          <div className="relative h-screen flex items-center justify-center overflow-hidden">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/banner.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {/* <div className="absolute inset-0 bg-black/30" /> */}
+
+            <motion.div
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <svg
+                className="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </motion.div>
+          </div>
+
+          <section id="services" className="py-20 px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+            <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
+                Why Choose a Personal Travel Consultant?
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                As your dedicated travel consultant, I provide personalized attention, insider access, and curated experiences that transform ordinary trips into extraordinary journeys.
+              </p>
+            </AnimatedSection>
+
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 mb-20">
+              <AnimatedSection animation="slideUp" delay={0.1} className="text-center">
+                <div className="bg-blue-100 dark:bg-blue-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 dark:text-white">Personalized Planning</h3>
+                <p className="text-gray-600 dark:text-gray-400">Every detail tailored to your preferences, from accommodations to exclusive experiences.</p>
+              </AnimatedSection>
+
+              <AnimatedSection animation="slideUp" delay={0.2} className="text-center">
+                <div className="bg-green-100 dark:bg-green-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 dark:text-white">Insider Access</h3>
+                <p className="text-gray-600 dark:text-gray-400">Exclusive connections providing VIP treatment and access to experiences not available to the public.</p>
+              </AnimatedSection>
+
+              <AnimatedSection animation="slideUp" delay={0.3} className="text-center">
+                <div className="bg-purple-100 dark:bg-purple-900/30 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold mb-3 dark:text-white">24/7 Support</h3>
+                <p className="text-gray-600 dark:text-gray-400">Your dedicated consultant available throughout your journey for any needs or changes.</p>
+              </AnimatedSection>
+            </div>
+          </section>
+
+          <ParallaxSection
+            className="relative py-32"
+            backgroundImage="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920"
+            offset={20}
+          >
+            <div className="absolute inset-0 bg-black/50" />
+            <AnimatedSection animation="fadeIn" className="relative z-10 text-center text-white px-8">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                Your Story Awaits
+              </h2>
+              <p className="text-xl md:text-2xl max-w-3xl mx-auto">
+                Every journey tells a story. Let me help you write yours with moments that will last a lifetime.
+              </p>
+            </AnimatedSection>
+          </ParallaxSection>
+
+          <section id="experiences" className="py-20 px-8 bg-gray-50 dark:bg-gray-900">
+            <AnimatedSection animation="slideUp" className="max-w-6xl mx-auto text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800 dark:text-white">
+                Curated Experiences
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Discover meticulously crafted journeys designed for the discerning traveler seeking authentic, transformative experiences.
+              </p>
+            </AnimatedSection>
+
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {destinations.map((destination, index) => (
+                <AnimatedSection
+                  key={destination.title}
+                  animation="scale"
+                  delay={index * 0.1}
+                >
+                  <DestinationCard {...destination} />
+                </AnimatedSection>
+              ))}
+            </div>
+          </section>
+
+          <section className="py-20 px-8 bg-gradient-to-r from-blue-600 to-cyan-500">
+            <AnimatedSection animation="slideUp" className="max-w-4xl mx-auto text-center text-white">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Ready for Your Bespoke Journey?
+              </h2>
+              <p className="text-xl mb-8">
+                Let's collaborate to design a travel experience that reflects your unique vision and exceeds your expectations.
+              </p>
+              <motion.button
+                className="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Schedule Your Consultation
+              </motion.button>
+            </AnimatedSection>
+          </section>
+
+          <footer className="bg-gray-900 dark:bg-black text-white py-12 px-8">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
+              <div>
+                <Logo className="w-16 h-16 mb-4" />
+                <h3 className="text-2xl font-bold mb-2">LifeTender</h3>
+                <p className="text-gray-400">Your personal travel consultant for bespoke luxury journeys.</p>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#experiences" className="hover:text-white transition-colors">Experiences</a></li>
+                  <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+                  <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
+                  <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Services</h4>
+                <ul className="space-y-2 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition-colors">Luxury Planning</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">Concierge Services</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">VIP Access</a></li>
+                  <li><a href="#" className="hover:text-white transition-colors">24/7 Support</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-4">Connect</h4>
+                <p className="text-gray-400 mb-4">Follow us for travel inspiration</p>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    </svg>
+                  </a>
+                  <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+              <p>&copy; 2024 LifeTender. All rights reserved. | Personal Travel Consultant</p>
+            </div>
+          </footer>
+        </motion.div>
+      )}
+    </>
   )
 }
